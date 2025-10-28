@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
+import { AuthService } from '../shared/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -15,10 +17,17 @@ export class LoginComponent {
     password: ['titok']
   });
 
-  constructor(private builder: FormBuilder) { }
+  constructor(
+    private builder: FormBuilder,
+    private auth: AuthService,
+    private router: Router
+  ) { }
 
   onLogin() {
-    console.log('Bejelentkezés árnyékeljárás...');
+    if (this.loginForm.valid) {
+      this.auth.loginSuccess();
+      this.router.navigate(['employee']);
+    }
   }
 
 }

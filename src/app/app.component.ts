@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterLink, RouterOutlet } from '@angular/router';
+import { AuthService } from './shared/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -11,8 +12,16 @@ import { RouterLink, RouterOutlet } from '@angular/router';
 export class AppComponent {
   isLoggedIn = false;
 
+  constructor(private auth: AuthService) { }
+
+  ngOnInit() {
+    this.auth.isAuthenticated$.subscribe(isAuthenticated => {
+      this.isLoggedIn = isAuthenticated
+    })
+  }
+
   logout() {
-    console.log('Kilépés árnyékeljárás...');
+    this.auth.logout();
   }
 }
 
