@@ -1,0 +1,29 @@
+
+
+
+
+<div class="d-flex justify-content-center mt-5">
+    <div class="card p-4 shadow-lg"
+        style="width: 25rem;">
+        <h2 class="card-title text-center mb-4">Bejelentkezés</h2>
+        <form [formGroup]="loginForm">
+            <div class="form-group mb-3">
+                <label for="username">Felhasználónév</label>
+                <input type="text" formControlName="username"
+                class="form-control" id="username">
+            </div>
+            <div class="form-group mb-4">
+                <label for="password">Jelszó</label>
+                <input type="password" formControlName="password"
+                class="form-control" id="password">
+            </div>
+            <div class="d-grid">
+                <button type="submit" class="btn btn-primary"
+                    (click)="onLogin()">
+                    Bejelentkezés
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
